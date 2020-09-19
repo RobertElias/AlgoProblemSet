@@ -13,7 +13,7 @@ def findThreeLargestNumbers(array):
         updateLargest(threeLargest, num)
     return threeLargest
 
-
+# method helper function
 def updateLargest(threeLargest, num):
     if threeLargest[2] is None or num > threeLargest[2]:
         shiftAndUpdate(threeLargest, num, 2)
@@ -22,6 +22,7 @@ def updateLargest(threeLargest, num):
     elif threeLargest[0] is None or num > threeLargest[0]:
         shiftAndUpdate(threeLargest, num, 0)
 
+# method helper function
 def shiftAndUpdate(array, num, idx):
     for i in range(idx + 1):
         if i == idx:
