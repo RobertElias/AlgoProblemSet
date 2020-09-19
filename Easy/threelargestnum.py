@@ -13,7 +13,8 @@ def findThreeLargestNumbers(array):
         updateLargest(threeLargest, num)
     return threeLargest
 
-# method helper function
+# method helper function checks
+# if the numbers are largets in stored array
 def updateLargest(threeLargest, num):
     if threeLargest[2] is None or num > threeLargest[2]:
         shiftAndUpdate(threeLargest, num, 2)
