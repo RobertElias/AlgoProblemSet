@@ -1,55 +1,50 @@
-#
-# Binary trees are already defined with this interface:
-# class Tree(object):
-#   def __init__(self, x):
-#     self.value = x
-#     self.left = None
-#     self.right = None
-def tree_paths_sum(self, root):
-    if root is None:
-        return []
+# Definition for a binary tree node.
+# # class TreeNode:
+# #     def __init__(self, val=0, left=None, right=None):
+# #         self.val = val
+# #         self.left = left
+# #         self.right = right
+# class Solution:
+#     # Function to find sum of all the element in binary tree
+#     def tree_paths_sum(root):
+# 	    if (root == None):
+# 		    return 0
+# 	    return (root.val + addBT(root.left) +
+# 		    			addBT(root.right))
         
-    stack = [root]
-    result = []
-        
-    while len(stack)>0:     # use while to do iteration
-            
-        cur_node = stack.pop()
-        result.append(cur_node.value)   # pop out the node of the root and append its value
-            
-        if cur_node.right is not None:
-            stack.append(cur_node.right)
-        if cur_node.left is not None:
-            stack.append(cur_node.left)
-                
-        return result
-    
 
-#####
+# Solution 2
+def tree_paths_sum(root):
+    global sum
+    #Notes if root is empty return none
+    if root is None:
+        return
+    #Notes sum of root.data or root.val
+    sum += root.data
+    # NOTES go in left and right direction
+    tree_paths_sum(root.left)
+    tree_paths_sum(root.right)
+#
+# self, root, sum):
+#         """
+#         :type root: TreeNode
+#         :type sum: int
+#         :rtype: bool
+#         """
+#         if not root:
+#             return False
+
+#         sum -= root.val
+#         if not root.left and not root.right:  # if reach a leaf
+#             return sum == 0
+#         return self.hasPathSum(root.left, sum) or self.hasPathSum(root.right, sum)
+
+
+####3RD SOLUTION####
 # Definition for a binary tree node.
 # class TreeNode:
-#     def __init__(self, x):
-#         self.val = x
-#         self.left = None
-#         self.right = None
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
 
-class Solution(object):
-    def preorderTraversal(self, root):
-        
-        if root is None:
-            return []
-        
-        stack = [root]
-        result = []
-        
-        while len(stack)>0:     # use while to do iteration
-            
-            cur_node = stack.pop()
-            result.append(cur_node.val)   # pop out the node of the root and append its value
-            
-            if cur_node.right is not None:
-                stack.append(cur_node.right)
-            if cur_node.left is not None:
-                stack.append(cur_node.left)
-                
-        return result
