@@ -1,6 +1,6 @@
 class Node:
-    def __init__(self, data):
-        self.data = data
+    def __init__(self, x):
+        self.value = x
         self.next = None
  
  
@@ -9,12 +9,12 @@ class LinkedList:
         self.head = None
         self.last_node = None
  
-    def append(self, data):
+    def append(self, value):
         if self.last_node is None:
-            self.head = Node(data)
+            self.head = Node(value)
             self.last_node = self.head
         else:
-            self.last_node.next = Node(data)
+            self.last_node.next = Node(value)
             self.last_node = self.last_node.next
  
     def get_prev_node(self, ref_node):
@@ -33,17 +33,17 @@ class LinkedList:
     def display(self):
         current = self.head
         while current:
-            print(current.data, end = ' ')
+            print(current.value, end = ' ')
             current = current.next
  
  
 def remove_duplicates(llist):
     current1 = llist.head
     while current1:
-        data = current1.data
+        value = current1.value
         current2 = current1.next
         while current2:
-            if current2.data == data:
+            if current2.value == value:
                 llist.remove(current2)
             current2 = current2.next
         current1 = current1.next
@@ -52,8 +52,8 @@ def remove_duplicates(llist):
 a_llist = LinkedList()
  
 data_list = input('Please enter the elements in the linked list: ').split()
-for data in data_list:
-    a_llist.append(int(data))
+for value in data_list:
+    a_llist.append(int(value))
  
 remove_duplicates(a_llist)
  
